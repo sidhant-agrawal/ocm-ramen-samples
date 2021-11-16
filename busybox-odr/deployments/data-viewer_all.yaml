@@ -87,12 +87,19 @@ items:
         containers:
         - image: ' '
           name: data-viewer
+          imagePullPolicy: Always
           ports:
           - containerPort: 8080
             protocol: TCP
           - containerPort: 8443
             protocol: TCP
           resources: {}
+          env:
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: mysqlsecret
+                  key: mysqldbpass
   status: {}
 - apiVersion: v1
   kind: Service
@@ -133,6 +140,8 @@ items:
   spec:
     port:
       targetPort: 8080-tcp
+    tls:
+      termination: edge
     to:
       kind: Service
       name: data-viewer
