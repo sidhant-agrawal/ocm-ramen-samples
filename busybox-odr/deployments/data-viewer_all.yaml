@@ -140,8 +140,6 @@ items:
   spec:
     port:
       targetPort: 8080-tcp
-    tls:
-      termination: edge
     to:
       kind: Service
       name: data-viewer
