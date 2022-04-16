@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: busybox-pvc
   labels:
-    appname: busybox
+    appname: appname-1
 spec:
   accessModes:
   - ReadWriteOnce

@@ -2,18 +2,18 @@
 apiVersion: ramendr.openshift.io/v1alpha1
 kind: DRPlacementControl
 metadata:
-  name: busybox-drpc
-  namespace: busybox-sample
+  name: drpc-1
+  namespace: workload-1
   labels:
-    app: busybox-sample
+    app: app-1
 spec:
   preferredCluster: "cluster1"
   action: "Failback"
   drPolicyRef:
-    name: dr-policy
+    name: odr-policy-5m
   placementRef:
     kind: PlacementRule
-    name: busybox-placement
+    name: placementrule-1
   pvcSelector:
     matchLabels:
-      appname: busybox
+      appname: appname-1

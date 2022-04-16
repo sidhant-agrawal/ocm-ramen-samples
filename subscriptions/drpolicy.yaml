@@ -2,11 +2,13 @@
 apiVersion: ramendr.openshift.io/v1alpha1
 kind: DRPolicy
 metadata:
-  name: dr-policy
+  name: odr-policy-5m
 spec:
   drClusterSet:
-  - name: hub
-    s3ProfileName: minio-on-hub
-  - name: cluster1
-    s3ProfileName: minio-on-hub
-  schedulingInterval: 1m
+  - name: sagrawal-c1
+    region: region1
+    s3ProfileName: s3profile-sagrawal-c1-ocs-storagecluster
+  - name: sagrawal-c2
+    region: region2
+    s3ProfileName: s3profile-sagrawal-c2-ocs-storagecluster
+  schedulingInterval: 5m
