@@ -8,7 +8,7 @@ metadata:
 spec:
   preferredCluster: "sagrawal-c1"
   drPolicyRef:
-    name: odr-policy-15m
+    name: odr-policy-5m
   placementRef:
     kind: PlacementRule
     name: placementrule-2

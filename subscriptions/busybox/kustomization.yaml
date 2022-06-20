@@ -2,5 +2,6 @@ namespace: workload-2
 resources:
 - namespace.yaml
 - placementrule.yaml
-- subscription.yaml
 - drpc.yaml
+- application.yaml
+- subscription.yaml
