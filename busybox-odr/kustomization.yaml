@@ -2,3 +2,5 @@
 resources:
 - busybox-pvc.yaml
 - busybox-deployment.yaml
+- busybox-pvc2.yaml
+- busybox-deployment2.yaml

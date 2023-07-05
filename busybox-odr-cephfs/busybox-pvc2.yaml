@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: busybox-pvc
+  name: busybox-pvc2
   annotations:
     volume.beta.kubernetes.io/storage-class: ocs-storagecluster-cephfs
   labels:
