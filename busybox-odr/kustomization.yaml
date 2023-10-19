@@ -9,4 +9,4 @@ patches:
   patch: |-
     - op: replace
       path: /spec/storageClassName
-      value: ocs-storagecluster-ceph-rbd
+      value: ocs-storagecluster-ceph-rbd-encrypted
