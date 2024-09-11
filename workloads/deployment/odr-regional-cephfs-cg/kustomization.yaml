@@ -1,0 +1,21 @@
+---
+commonLabels:
+  appname: busybox
+resources:
+  - ../base-cg
+  - additional-pvc.yaml
+patchesStrategicMerge:
+  - deployment.yaml
+patches:
+  # Customize for internal cephfs storage.
+  - target:
+      kind: PersistentVolumeClaim
+      name: busybox-cg1-pvc1
+    patch: |-
+      - op: replace
+        path: /spec/storageClassName
+        value: rook-cephfs1
+      - op: replace
+        path: /spec/accessModes
+        value:
+          - ReadWriteMany

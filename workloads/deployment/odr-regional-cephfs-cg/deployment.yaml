@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox
+spec:
+  template:
+    spec:
+      containers:
+        - name: logger
+          command:
+            - sh
+            - -c
+            - |
+              emit() {
+                  echo "$(date) $1" | tee -a /var/cg1pvc1/ramen.log /var/cg1pvc2/ramen.log /var/cg2pvc1/ramen.log /var/cg2pvc2/ramen.log
+                  sync
+              }
+              trap "emit STOP; exit" TERM
+              emit START
+              while true; do
+                  sleep 10 & wait
+                  emit UPDATE
+              done
+          volumeMounts:
+            - name: cg1pvc2
+              mountPath: /var/cg1pvc2
+            - name: cg2pvc1
+              mountPath: /var/cg2pvc1
+            - name: cg2pvc2
+              mountPath: /var/cg2pvc2
+      volumes:
+        - name: cg1pvc2
+          persistentVolumeClaim:
+            claimName: busybox-cg1-pvc2
+        - name: cg2pvc1
+          persistentVolumeClaim:
+            claimName: busybox-cg2-pvc1
+        - name: cg2pvc2
+          persistentVolumeClaim:
+            claimName:  busybox-cg2-pvc2
